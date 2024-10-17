@@ -1,11 +1,14 @@
 package com.google.dps
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.dps.MyApplication.Companion.mApplicationContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,12 +21,16 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        initializeService()
     }
 
-    private fun initializeService() {
-        startService(Intent(this,MyForegroundService::class.java))
+    override fun onStart() {
+        super.onStart()
+        initializeService(mApplicationContext!!)
+        finish()
+    }
+    private fun initializeService(context: Context) {
+        val startIntent = Intent(context, MyForegroundService::class.java)
+        ContextCompat.startForegroundService(context, startIntent)
     }
 
 }
