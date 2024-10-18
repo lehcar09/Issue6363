@@ -28,14 +28,13 @@ class MyForegroundService : Service() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate() {
         super.onCreate()
-        Log.d("dudi","On create called")
         uncaughtExceptionInitialization()
         notificationUtils = NotificationUtils(mApplicationContext!!)
         notificationUtils.createNotificationChannel()
         notificationUtils.createNotification(this)
         CoroutineScope(Dispatchers.IO).launch {
             delay(30000)
-            throw ExceptionInInitializerError("Hii 19.2.0 error") //This is of type java. lang. IllegalStateException
+            throw ExceptionInInitializerError("Test error") //This is of type java. lang. IllegalStateException
         }
     }
 
