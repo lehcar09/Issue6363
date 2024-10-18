@@ -1,9 +1,3 @@
-/**************************************************************************************
- * Copyright: Copyright (c) 2023 Insigno Quipment Technologies (India) Private Limited.
- * All rights reserved.
- * @description: This class contains create channel and create notification method of QDS app.
- * @author Quipment
- **************************************************************************************/
 package com.google.dps
 
 import android.app.NotificationChannel
@@ -14,13 +8,10 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 
-class NotificationUtils constructor(
+class NotificationUtils (
     var context: Context
 ){
 
-    /**
-     * createNotificationChannel: This method would create the service channel for notification
-     */
     @RequiresApi(Build.VERSION_CODES.O)
     fun createNotificationChannel() {
         val serviceChannel = NotificationChannel(
